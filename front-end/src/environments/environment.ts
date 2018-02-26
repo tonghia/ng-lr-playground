@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://laravel-play.local:8000'
+  apiUrl: 'http://laravel-play.local:8000/'
 };

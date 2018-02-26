@@ -8,6 +8,8 @@ import { LoginModule } from './pages/login/login.module';
 import { PreloadAllModules, RouterModule } from '@angular/router';
 import { appRoutes } from './app.routes';
 import { ErrorModule } from './pages/error/error.module';
+import { ApiService } from './core/api.service';
+import { AuthService } from './core/auth.service';
 
 
 @NgModule({
@@ -25,7 +27,10 @@ import { ErrorModule } from './pages/error/error.module';
     }),
     ErrorModule
   ],
-  providers: [],
+  providers: [
+    ApiService,
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

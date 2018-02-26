@@ -1,15 +1,10 @@
 import { Injectable, Inject } from '@angular/core';
-import { Http, Headers, RequestOptions } from '@angular/http';
 import { tokenNotExpired } from 'angular2-jwt';
 import {Subject, Observable} from 'rxjs';
 
 @Injectable()
 export class AuthService {
-    constructor(
-        public http: Http,
-        @Inject('baseUrl') public baseUrl: string,
-        @Inject('defaultLanguage') public defaultLanguage: string
-    ) { }
+    constructor( ) { }
     loginCompleteEvent = new Subject();
     logoutCompleteEvent = new Subject();
 
@@ -37,15 +32,15 @@ export class AuthService {
         this.loginCompleteEvent.next();
     }
 
-    logout() {
-        let language = localStorage.getItem('language');
-        if (language == null) {
-            language = this.defaultLanguage;
-        }
-        this.logoutCompleteEvent.next();
-        localStorage.removeItem('user');
-        localStorage.setItem('language', language);
-    }
+    // logout() {
+    //     let language = localStorage.getItem('language');
+    //     if (language == null) {
+    //         language = this.defaultLanguage;
+    //     }
+    //     this.logoutCompleteEvent.next();
+    //     localStorage.removeItem('user');
+    //     localStorage.setItem('language', language);
+    // }
 
     getToken() {
         return localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user'))['token'] : null;
